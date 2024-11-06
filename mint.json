@@ -12,6 +12,12 @@
       "to": "#325c8c"
     }
   },
+  "modeToggle": { "default": "light", "isHidden": true },
+  "background": { "style": "grid" },
+  "font": {
+    "headings": { "family": "Inter", "weight": 700 },
+    "body": { "family": "Inter", "weight": 400 }
+  },
   "topbarLinks": [
     {
       "name": "Support",
