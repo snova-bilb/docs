@@ -48,9 +48,9 @@
       ]
     },
     {
-      "group": "Essentials",
+      "group": "SambaStudio",
       "pages": [
-        "essentials/reusable-snippets"
+        "sambastudio/samba-1-turbo-v03-1"
       ]
     },
     {
