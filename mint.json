@@ -46,12 +46,6 @@
       ]
     },
     {
-      "group": "SambaStudio",
-      "pages": [
-        "sambastudio/samba-1-turbo-v03-1"
-      ]
-    },
-    {
       "group": "API Documentation",
       "pages": [
         "api-reference/introduction"
