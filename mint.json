@@ -44,7 +44,13 @@
       "pages": [
         "introduction",
         "quickstart",
-        "development"
+        "development",
+           {
+      "group": "SambaStudio",
+      "pages": [
+        "sambastudio/samba-1-turbo-v03-1"
+      ]
+    }
       ]
     },
     {
