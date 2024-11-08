@@ -47,9 +47,12 @@
         "development"
       ]
     },
-    {
+       {
       "group": "SambaStudio",
       "pages": [
+        "sambastudio/model-release-notes"
+      ]
+      [
         "sambastudio/samba-1-turbo-v03-1"
       ]
     },
