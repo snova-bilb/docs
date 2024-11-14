@@ -54,6 +54,12 @@
       ]
     },
     {
+      "group": "DataScale",
+      "pages": [
+        "datascale/testfile"
+      ]
+    }
+    {
       "group": "API Documentation",
       "pages": [
         "api-reference/introduction"
