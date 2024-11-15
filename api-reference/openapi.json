@@ -10,12 +10,14 @@
   },
   "servers": [
     {
-      "url": "http://sandbox.mintlify.com"
+      "url": "https://api.sambanova.ai"
     }
   ],
   "security": [
     {
-      "bearerAuth": []
+      "bearerAuth": [
+
+      ]
     }
   ],
   "paths": {
@@ -114,7 +116,9 @@
         "responses": {
           "204": {
             "description": "Plant deleted",
-            "content": {}
+            "content": {
+
+            }
           },
           "400": {
             "description": "unexpected error",
@@ -122,6 +126,120 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/chat/completions": {
+      "post": {
+        "parameters": [
+          {
+            "in": "header",
+            "name": "authorization",
+            "schema": {
+              "type": "string",
+              "example": "Bearer $API_KEY"
+            },
+            "required": true
+          },
+          {
+            "in": "header",
+            "name": "content-type",
+            "schema": {
+              "type": "string",
+              "example": "application/json"
+            },
+            "required": true
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "stream": {
+                    "type": "boolean",
+                    "example": true
+                  },
+                  "model": {
+                    "type": "string",
+                    "example": "Meta-Llama-3.1-8B-Instruct"
+                  },
+                  "messages": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "example": [
+                        {
+                          "role": "system",
+                          "content": "You are a helpful assistant"
+                        },
+                        {
+                          "role": "user",
+                          "content": "Hello"
+                        }
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "HTTP Status 200"
+          },
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "data": {
+                    "type": "object",
+                    "properties": {
+                      "id": {
+                        "type": "string",
+                        "example": "4c5e4a44-e847-467d-b9cd-d2f6530678cd"
+                      },
+                      "object": {
+                        "type": "string",
+                        "example": "chat.completion.chunk"
+                      },
+                      "created": {
+                        "type": "integer",
+                        "example": 1721336361
+                      },
+                      "model": {
+                        "type": "string",
+                        "example": "llama3-8b"
+                      },
+                      "system_fingerprint": {
+                        "type": "string",
+                        "example": "fastcoe"
+                      },
+                      "choices": {
+                        "type": "array",
+                        "items": {
+                          "type": "object",
+                          "example": [
+                            {
+                              "index": 0,
+                              "delta": {
+                                "content": ""
+                              },
+                              "logprobs": null,
+                              "finish_reason": null
+                            }
+                          ]
+                        }
+                      }
+                    }
+                  }
                 }
               }
             }
