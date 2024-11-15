@@ -44,8 +44,7 @@
                   },
                   "model": {
                     "type": "string",
-                    "example": "Meta-Llama-3.1-8B-Instruct",
-                    "default": "Meta-Llama-3.1-8B-Instruct"
+                    "example": "Meta-Llama-3.1-8B-Instruct"
                   },
                   "messages": {
                     "type": "array",
@@ -55,10 +54,12 @@
                           "type": "object",
                           "properties": {
                             "role": {
-                              "type": "string"
+                              "type": "string",
+                              "example": "system"
                             },
                             "content": {
-                              "type": "string"
+                              "type": "string",
+                              "example": "You are a helpful assistant"
                             }
                           }
                         }
