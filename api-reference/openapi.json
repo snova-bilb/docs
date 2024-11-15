@@ -21,6 +21,7 @@
             "in": "header",
             "schema": {
               "type": "string"
+              "value": "Bearer"
             }
           },
           {
