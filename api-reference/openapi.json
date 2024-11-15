@@ -21,14 +21,15 @@
             "in": "header",
             "schema": {
               "type": "string",
-              "example": "Bearer $API_KEY"
+              "default": "Bearer $API_KEY"
             }
           },
           {
             "name": "Content-Type",
             "in": "header",
             "schema": {
-              "type": "string"
+              "type": "string",
+              "default": "application/json"
             }
           }
         ],
