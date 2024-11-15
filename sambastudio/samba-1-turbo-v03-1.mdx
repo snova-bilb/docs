@@ -6,14 +6,27 @@ description: 'Release version: v0.3.1 | Release date: 10/07/2024'
 The Samba-1 Turbo v0.3.1 release is a minor release that includes incremental improvements over the Samba-1 Turbo v0.3 release. It brings performance improvements for specific model configurations and introduces several new models to the platform.
 
 ## Release features
-- The Samba-1 Turbo v0.3.1 release includes the following improvements.
-  - Llama 3 and 3.1 70B sequence length 8k performance.
-- Added the following model selections:
-  - Mistral-Nemo-Instruct-2407.
-  - Mistral-Large-2.
+
+* The Samba-1 Turbo v0.3.1 release includes the following improvements.
+
+  * Llama 3 and 3.1 70B sequence length 8k performance.
+
+* Added the following model selections:
+
+  * Mistral-Nemo-Instruct-2407.
+
+  * Mistral-Large-2.
     <Note>Mistral-Large-2 has a restricted license that requires license approval from Mistral AI.</Note>
-  - Gemma-2-9b-it.
-  - Sarashina2-70B with sequence length support up to 8k.
-  
+
+  * Gemma-2-9b-it.
+
+  * Sarashina2-70B with sequence length support up to 8k.
 
 ## Samba-1 Turbo v0.3.1 model options
+
+
+
+| Model Name                 | Release Status | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    | Attributes                            | Usage Notes                                                                                                                                                                         |
+| -------------------------- | -------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Mistral-Nemo-Instruct-2407 | New            | Mistral-Nemo-Instruct-2407 is a specialized model optimized for handling long-range dependencies and structured tasks. It uses a new Tekken tokenizer, based on Tiktoken. This tokenizer is designed to compress languages and source code. It can support English, French, German, Spanish, Italian, Portuguese, Chinese, Japanese, Korean, Arabic, and Hindi. It is fine-tuned to excel in dialogue systems, answering complex, multi-step queries, and generating content that requires logical flow. Designed with instruction-following capabilities, it is particularly effective where precision and detailed responses are essential, such as in technical writing, long-form content generation, and customer support applications. Its optimization allows for smoother performance in highly specialized use cases. | * Multilingual* Instruction-following | Mistral-Nemo-Instruct-2407 supports sequence lengths up to 4k during inference in the first release of this model. Longer sequence length support will be added in future releases. |
+|                            |                |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                |                                       |                                                                                                                                                                                     |
