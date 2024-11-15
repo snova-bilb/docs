@@ -21,7 +21,7 @@
             "in": "header",
             "schema": {
               "type": "string",
-              "default": "Bearer $API_KEY"
+              "example": "Bearer $API_KEY"
             }
           },
           {
@@ -29,7 +29,7 @@
             "in": "header",
             "schema": {
               "type": "string",
-              "default": "application/json"
+              "example": "application/json"
             }
           }
         ],
@@ -43,7 +43,9 @@
                     "type": "boolean"
                   },
                   "model": {
-                    "type": "string"
+                    "type": "string",
+                    "example": "Meta-Llama-3.1-8B-Instruct",
+                    "default": "Meta-Llama-3.1-8B-Instruct"
                   },
                   "messages": {
                     "type": "array",
