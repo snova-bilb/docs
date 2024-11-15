@@ -20,8 +20,8 @@
             "name": "Authorization",
             "in": "header",
             "schema": {
-              "type": "string"
-              "value": "Bearer"
+              "type": "string",
+              "example": "Bearer $API_KEY"
             }
           },
           {
