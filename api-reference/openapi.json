@@ -21,222 +21,110 @@
     }
   ],
   "paths": {
-    "/plants": {
-      "get": {
-        "description": "Returns all plants from the system that the user has access to",
-        "parameters": [
-          {
-            "name": "limit",
-            "in": "query",
-            "description": "The maximum number of results to return",
+  "/v1/chat/completions": {
+    "post": {
+      "description": "Create a text completion"
+      "parameters": [
+        {
+          "in": "header",
+          "name": "authorization",
+          "schema": {
+            "type": "string",
+            "example": "Bearer $API_KEY"
+          },
+          "required": true
+        },
+        {
+          "in": "header",
+          "name": "content-type",
+          "schema": {
+            "type": "string",
+            "example": "application/json"
+          },
+          "required": true
+        }
+      ],
+      "requestBody": {
+        "content": {
+          "application/json": {
             "schema": {
-              "type": "integer",
-              "format": "int32"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Plant response",
-            "content": {
-              "application/json": {
-                "schema": {
+              "type": "object",
+              "properties": {
+                "stream": {
+                  "type": "boolean",
+                  "example": true
+                },
+                "model": {
+                  "type": "string",
+                  "example": "Meta-Llama-3.1-8B-Instruct"
+                },
+                "messages": {
                   "type": "array",
                   "items": {
-                    "$ref": "#/components/schemas/Plant"
+                    "type": "object",
+                    "example": [
+                      {
+                        "role": "system",
+                        "content": "You are a helpful assistant"
+                      },
+                      {
+                        "role": "user",
+                        "content": "Hello"
+                      }
+                    ]
                   }
-                }
-              }
-            }
-          },
-          "400": {
-            "description": "Unexpected error",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
                 }
               }
             }
           }
         }
       },
-      "post": {
-        "description": "Creates a new plant in the store",
-        "requestBody": {
-          "description": "Plant to add to the store",
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/NewPlant"
-              }
-            }
-          },
-          "required": true
+      "responses": {
+        "200": {
+          "description": "HTTP Status 200"
         },
-        "responses": {
-          "200": {
-            "description": "plant response",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Plant"
-                }
-              }
-            }
-          },
-          "400": {
-            "description": "unexpected error",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/plants/{id}": {
-      "delete": {
-        "description": "Deletes a single plant based on the ID supplied",
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "description": "ID of plant to delete",
-            "required": true,
+        "content": {
+          "application/json": {
             "schema": {
-              "type": "integer",
-              "format": "int64"
-            }
-          }
-        ],
-        "responses": {
-          "204": {
-            "description": "Plant deleted",
-            "content": {
-
-            }
-          },
-          "400": {
-            "description": "unexpected error",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/v1/chat/completions": {
-      "post": {
-        "parameters": [
-          {
-            "in": "header",
-            "name": "authorization",
-            "schema": {
-              "type": "string",
-              "example": "Bearer $API_KEY"
-            },
-            "required": true
-          },
-          {
-            "in": "header",
-            "name": "content-type",
-            "schema": {
-              "type": "string",
-              "example": "application/json"
-            },
-            "required": true
-          }
-        ],
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "type": "object",
-                "properties": {
-                  "stream": {
-                    "type": "boolean",
-                    "example": true
-                  },
-                  "model": {
-                    "type": "string",
-                    "example": "Meta-Llama-3.1-8B-Instruct"
-                  },
-                  "messages": {
-                    "type": "array",
-                    "items": {
-                      "type": "object",
-                      "example": [
-                        {
-                          "role": "system",
-                          "content": "You are a helpful assistant"
-                        },
-                        {
-                          "role": "user",
-                          "content": "Hello"
-                        }
-                      ]
-                    }
-                  }
-                }
-              }
-            }
-          }
-        },
-        "responses": {
-          "200": {
-            "description": "HTTP Status 200"
-          },
-          "content": {
-            "application/json": {
-              "schema": {
-                "type": "object",
-                "properties": {
-                  "data": {
-                    "type": "object",
-                    "properties": {
-                      "id": {
-                        "type": "string",
-                        "example": "4c5e4a44-e847-467d-b9cd-d2f6530678cd"
-                      },
-                      "object": {
-                        "type": "string",
-                        "example": "chat.completion.chunk"
-                      },
-                      "created": {
-                        "type": "integer",
-                        "example": 1721336361
-                      },
-                      "model": {
-                        "type": "string",
-                        "example": "llama3-8b"
-                      },
-                      "system_fingerprint": {
-                        "type": "string",
-                        "example": "fastcoe"
-                      },
-                      "choices": {
-                        "type": "array",
-                        "items": {
-                          "type": "object",
-                          "example": [
-                            {
-                              "index": 0,
-                              "delta": {
-                                "content": ""
-                              },
-                              "logprobs": null,
-                              "finish_reason": null
-                            }
-                          ]
-                        }
+              "type": "object",
+              "properties": {
+                "data": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "string",
+                      "example": "4c5e4a44-e847-467d-b9cd-d2f6530678cd"
+                    },
+                    "object": {
+                      "type": "string",
+                      "example": "chat.completion.chunk"
+                    },
+                    "created": {
+                      "type": "integer",
+                      "example": 1721336361
+                    },
+                    "model": {
+                      "type": "string",
+                      "example": "llama3-8b"
+                    },
+                    "system_fingerprint": {
+                      "type": "string",
+                      "example": "fastcoe"
+                    },
+                    "choices": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "example": [
+                          {
+                            "index": 0,
+                            "delta": {
+                              "content": ""
+                            },
+                            "logprobs": null,
+                            "finish_reason": null
+                          }
+                        ]
                       }
                     }
                   }
@@ -245,68 +133,6 @@
             }
           }
         }
-      }
-    }
-  },
-  "components": {
-    "schemas": {
-      "Plant": {
-        "required": [
-          "name"
-        ],
-        "type": "object",
-        "properties": {
-          "name": {
-            "description": "The name of the plant",
-            "type": "string"
-          },
-          "tag": {
-            "description": "Tag to specify the type",
-            "type": "string"
-          }
-        }
-      },
-      "NewPlant": {
-        "allOf": [
-          {
-            "$ref": "#/components/schemas/Plant"
-          },
-          {
-            "required": [
-              "id"
-            ],
-            "type": "object",
-            "properties": {
-              "id": {
-                "description": "Identification number of the plant",
-                "type": "integer",
-                "format": "int64"
-              }
-            }
-          }
-        ]
-      },
-      "Error": {
-        "required": [
-          "error",
-          "message"
-        ],
-        "type": "object",
-        "properties": {
-          "error": {
-            "type": "integer",
-            "format": "int32"
-          },
-          "message": {
-            "type": "string"
-          }
-        }
-      }
-    },
-    "securitySchemes": {
-      "bearerAuth": {
-        "type": "http",
-        "scheme": "bearer"
       }
     }
   }
